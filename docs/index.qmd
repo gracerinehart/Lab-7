@@ -24,6 +24,96 @@ excecute:
 
 # Introduction, Background & Motivation
 
+Through this study, we hope to address and provide increased analysis of
+the problem of firearm mortality in the United States. Gun violence is a
+major safety, social, and public health problem within the United States
+and requires additional investigation. The current literature suggests
+that within developed nations and other high income countries, the U.S.
+is an outlier in its rates of gun mortality. Initially linked to
+America’s frontier history and culture of citizen-owned guns, the U.S.
+continues to protect this 2nd amendment right and tradition of freedom,
+protection, and spirit of rebellion (@fortune2018guns). While a
+constitutional right, it may also be important to consider the needs of
+present-day society and how this right can be protected, yet regulated
+for a safer future. The large proportion of gun violence, mass
+shootings, and firearm mortality can partially be attributed to the
+weapon instrumentality effect. This is the hypothesis that the presence
+of guns leads to higher levels of violence, aggression, and lethal
+action when faced with a stressful or conflictual situation
+(@spieller2020gun). While some argue that aggression and violence will
+occur regardless of the weapon used, the capacity for lethality also has
+to be considered. It is much easier to unintentionally harm someone with
+a firearm than a knife, for instance. Understanding the relationship
+between firearm ownership and firearm mortality through this study will
+contribute to this system of thinking. If the hypothesis that firearm
+ownership and firearm mortality are positively correlated, this study
+can serve as further evidence that additional firearm restrictions
+should be implemented to protect everyday American people. 
+
+Within the U.S., gun mortality continues to be a major problem for its
+population, contributing to both mortality and morbidity. In 2020 alone,
+the Centers for Disease Control reported 45,000 firearm-related deaths
+with a rate of 6.1 deaths per 100,000 people. This is the highest
+reported rate since 1994 with 40% of deaths due to homicide and more
+than half due to suicide (@fontanarosa2022unrelenting). Access to
+firearms is also shifting suicide rates and the proportion of suicide
+deaths by firearm. Within the 45,222 firearm deaths in 2020, 60% of
+those were due to suicide. Similarly, among the 45,979 suicide deaths in
+the same year, 51% of those were from a firearm injury
+(@fontanarosa2022unrelenting). These statistics present a clear need for
+additional firearm regulation. Our study hopes to provide further
+evidence by illustrating a correlation between firearm ownership and
+firearm mortality from the Centers for Disease Control and Prevention
+and the World Population Review. 
+
+This study will use one dataset from the Centers for Disease Control and
+Prevention
+([data](https://www.cdc.gov/nchs/pressroom/sosmap/firearm_mortality/firearm.htm))
+and one from the World Population Review
+([data](https://worldpopulationreview.com/state-rankings/gun-ownership-by-state#sources)).
+The CDC dataset provides information on firearm mortality by state and
+this study will specifically focus on data from the year 2022. The
+firearm mortality data includes the number of deaths and death rate per
+state. More specifically, the death rate is the number of deaths per
+100,000 total population. The data also ranks each of the states
+according to their mortality rate. Additionally, the CDC provides a
+visual representation of the state ranking displayed on a map of the
+U.S. using a gradient. 
+
+The dataset used for firearm ownership will be provided by the World
+Population Review and is originally from the Pew Research Center. This
+source provides information on gun ownership as a percentage of
+households that own guns within each state. Additionally, data was
+collected on gun ownership licenses. It should be noted that the varying
+gun regulations on gun ownership throughout the country make it
+difficult to obtain exact numbers for firearm ownership, however, the
+Pew Research Center has compiled accurate and reliable data given this
+limitation. It is also important to note that while one state may have
+more guns, they may also have a higher population. Because of this, it
+is important to make the distinction that data is based on the total
+percentage of firearm ownership in relation to each state’s population.
+Based on the data, some general trends can be noted. Gun ownership is
+highest in the South with about 36% of residents owning a gun. The West
+and Midwest each have ownership rates of around 30%, and the Northeast
+has the lowest rates of gun ownership with about 16% of residents in the
+region owning a firearm. Moreover, individuals in rural communities have
+the highest rates of firearm ownership and men are more likely to own a
+firearm than women. Similar to the firearm mortality data, this source
+also provides a visual representation of its data, organized on a map of
+the United States along a gradient according to ownership percentage. 
+
+Regarding the methods for this study, our data will first be cleaned and
+organized so it is more compatible with the functions within R studio.
+This study will narrow its scope to the year 2022 and focus specifically
+on the top five states with the highest percentage of firearm ownership.
+From here we will join the two data sets by state and conduct multiple
+statistical tests to identify the relationship between the two
+variables. More specifically, we will use the Shapiro test to test for
+normality, followed by the Spearman or Pearson test to analyze
+correlation. A linear regression model will also be used. After the
+necessary statistics have been run, we will develop ways to visualize
+and display the correlation using the ggplot package.
+
 # Data Exploration
 
 # Methods

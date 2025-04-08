@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -46,7 +66,9 @@ ul.task-list li input[type="checkbox"] {
 <meta name="citation_author" content="Kendall Landwehr">
 <meta name="citation_author" content="Andrew Zimbelman">
 <meta name="citation_language" content="en">
-<meta name="citation_reference" content="citation_title=Literate programming;,citation_author=Donald E. Knuth;,citation_publication_date=1984-05;,citation_cover_date=1984-05;,citation_year=1984;,citation_fulltext_html_url=https://doi.org/10.1093/comjnl/27.2.97;,citation_issue=2;,citation_doi=10.1093/comjnl/27.2.97;,citation_issn=0010-4620;,citation_volume=27;,citation_journal_title=Comput. J.;,citation_publisher=Oxford University Press, Inc.;">
+<meta name="citation_reference" content="citation_title=The unrelenting epidemic of firearm violence;,citation_author=Phil B Fontanarosa;,citation_author=Kirsten Bibbins-Domingo;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_issue=12;,citation_volume=328;,citation_journal_title=JAMA;,citation_publisher=American Medical Association;">
+<meta name="citation_reference" content="citation_title=Gun control in america: A global comparison;,citation_author=Lee Spieller;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_issue=1;,citation_volume=8;,citation_journal_title=Themis: Research Journal of Justice Studies and Forensic Science;">
+<meta name="citation_reference" content="citation_title=Guns in america: What do the data tell us?;,citation_author=Peter Fortune;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;">
 </head>
 
 <body>
@@ -128,6 +150,11 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction-background-motivation" class="level1">
 <h1>Introduction, Background &amp; Motivation</h1>
+<p>Through this study, we hope to address and provide increased analysis of the problem of firearm mortality in the United States. Gun violence is a major safety, social, and public health problem within the United States and requires additional investigation. The current literature suggests that within developed nations and other high income countries, the U.S. is an outlier in its rates of gun mortality. Initially linked to America’s frontier history and culture of citizen-owned guns, the U.S. continues to protect this 2nd amendment right and tradition of freedom, protection, and spirit of rebellion (<span class="citation" data-cites="fortune2018guns">Fortune (<a href="#ref-fortune2018guns" role="doc-biblioref">2018</a>)</span>). While a constitutional right, it may also be important to consider the needs of present-day society and how this right can be protected, yet regulated for a safer future. The large proportion of gun violence, mass shootings, and firearm mortality can partially be attributed to the weapon instrumentality effect. This is the hypothesis that the presence of guns leads to higher levels of violence, aggression, and lethal action when faced with a stressful or conflictual situation (<span class="citation" data-cites="spieller2020gun">Spieller (<a href="#ref-spieller2020gun" role="doc-biblioref">2020</a>)</span>). While some argue that aggression and violence will occur regardless of the weapon used, the capacity for lethality also has to be considered. It is much easier to unintentionally harm someone with a firearm than a knife, for instance. Understanding the relationship between firearm ownership and firearm mortality through this study will contribute to this system of thinking. If the hypothesis that firearm ownership and firearm mortality are positively correlated, this study can serve as further evidence that additional firearm restrictions should be implemented to protect everyday American people.&nbsp;</p>
+<p>Within the U.S., gun mortality continues to be a major problem for its population, contributing to both mortality and morbidity. In 2020 alone, the Centers for Disease Control reported 45,000 firearm-related deaths with a rate of 6.1 deaths per 100,000 people. This is the highest reported rate since 1994 with 40% of deaths due to homicide and more than half due to suicide (<span class="citation" data-cites="fontanarosa2022unrelenting">Fontanarosa &amp; Bibbins-Domingo (<a href="#ref-fontanarosa2022unrelenting" role="doc-biblioref">2022</a>)</span>). Access to firearms is also shifting suicide rates and the proportion of suicide deaths by firearm. Within the 45,222 firearm deaths in 2020, 60% of those were due to suicide. Similarly, among the 45,979 suicide deaths in the same year, 51% of those were from a firearm injury (<span class="citation" data-cites="fontanarosa2022unrelenting">Fontanarosa &amp; Bibbins-Domingo (<a href="#ref-fontanarosa2022unrelenting" role="doc-biblioref">2022</a>)</span>). These statistics present a clear need for additional firearm regulation. Our study hopes to provide further evidence by illustrating a correlation between firearm ownership and firearm mortality from the Centers for Disease Control and Prevention and the World Population Review.&nbsp;</p>
+<p>This study will use one dataset from the Centers for Disease Control and Prevention (<a href="https://www.cdc.gov/nchs/pressroom/sosmap/firearm_mortality/firearm.htm">data</a>) and one from the World Population Review (<a href="https://worldpopulationreview.com/state-rankings/gun-ownership-by-state#sources">data</a>). The CDC dataset provides information on firearm mortality by state and this study will specifically focus on data from the year 2022. The firearm mortality data includes the number of deaths and death rate per state. More specifically, the death rate is the number of deaths per 100,000 total population. The data also ranks each of the states according to their mortality rate. Additionally, the CDC provides a visual representation of the state ranking displayed on a map of the U.S. using a gradient.&nbsp;</p>
+<p>The dataset used for firearm ownership will be provided by the World Population Review and is originally from the Pew Research Center. This source provides information on gun ownership as a percentage of households that own guns within each state. Additionally, data was collected on gun ownership licenses. It should be noted that the varying gun regulations on gun ownership throughout the country make it difficult to obtain exact numbers for firearm ownership, however, the Pew Research Center has compiled accurate and reliable data given this limitation. It is also important to note that while one state may have more guns, they may also have a higher population. Because of this, it is important to make the distinction that data is based on the total percentage of firearm ownership in relation to each state’s population. Based on the data, some general trends can be noted. Gun ownership is highest in the South with about 36% of residents owning a gun. The West and Midwest each have ownership rates of around 30%, and the Northeast has the lowest rates of gun ownership with about 16% of residents in the region owning a firearm. Moreover, individuals in rural communities have the highest rates of firearm ownership and men are more likely to own a firearm than women. Similar to the firearm mortality data, this source also provides a visual representation of its data, organized on a map of the United States along a gradient according to ownership percentage.&nbsp;</p>
+<p>Regarding the methods for this study, our data will first be cleaned and organized so it is more compatible with the functions within R studio. This study will narrow its scope to the year 2022 and focus specifically on the top five states with the highest percentage of firearm ownership. From here we will join the two data sets by state and conduct multiple statistical tests to identify the relationship between the two variables. More specifically, we will use the Shapiro test to test for normality, followed by the Spearman or Pearson test to analyze correlation. A linear regression model will also be used. After the necessary statistics have been run, we will develop ways to visualize and display the correlation using the ggplot package.</p>
 </section>
 <section id="data-exploration" class="level1">
 <h1>Data Exploration</h1>
@@ -136,9 +163,20 @@ ul.task-list li input[type="checkbox"] {
 <h1>Methods</h1>
 <p>We have decided to scale back our analysis to look at the top 5 states with the most gun licenses and compare the gun mortality in those states. Once our data has been tested for normality using the Shapiro test, we’ll look at the correlation between the variables using the Spearman or Pearson tests, depending on whether or not the data is normally distributed. Once our data has been tested, we’ll analyze our hypothesis using a linear regression model. We could bring in supplemental data involving parameters like state population and income as control variables for our model. One potential challenge in the data is choosing which variables to use for our analysis.&nbsp;The CDC gun mortality data set includes both the death rate as a percentage and the total number of deaths for each state. The World Population Review data set for gun ownership includes the percentage of households that own guns and gun ownership licenses in each state. Choosing the correct variable for our analysis is important to prevent our data from skewing, hence why adding a state population data set may be beneficial.</p>
 <p>It would be best for us to conduct our analysis using per capita values, as those will give us more accurate representations of each state’s gun mortality and gun ownership rates. Some challeneges in the methods would be the lack of in-depth analysis. Due to our variables expected strong, postive correlation, there is only so much analysis we can do. This is another reason why adding another data set could prove to be useful. Our current selected methods will allow us to examine out hypothesis in the most direct manner, and our correlations will be easy to see in graphs and figures with a linear regression model. The methods we have outlined provide the most streamline analysis, and will allow us to reach our goal of proving our hypothesis efficiently.</p>
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-fontanarosa2022unrelenting" class="csl-entry" role="listitem">
+Fontanarosa, P. B., &amp; Bibbins-Domingo, K. (2022). The unrelenting epidemic of firearm violence. <em>JAMA</em>, <em>328</em>(12), 1201–1203.
+</div>
+<div id="ref-fortune2018guns" class="csl-entry" role="listitem">
+Fortune, P. (2018). <em>Guns in america: What do the data tell us?</em>
+</div>
+<div id="ref-spieller2020gun" class="csl-entry" role="listitem">
+Spieller, L. (2020). Gun control in america: A global comparison. <em>Themis: Research Journal of Justice Studies and Forensic Science</em>, <em>8</em>(1), 7.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
