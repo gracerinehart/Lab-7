@@ -1,0 +1,58 @@
+---
+title: Comparing Firearm Mortality to Firearm Ownership by State
+authors:
+  - name: Grace Rinehart
+    affiliation: Colorado State University
+    roles: writing
+    corresponding: true
+  - name: Kendall Landwehr
+    affiliation: Colorado State University
+    roles: research
+    corresponding: false
+  - name: Andrew Zimbelman
+    affiliation: Colorado State University
+    roles: data collection & analysis
+    corresponding: false
+bibliography: references.bib
+csl: apa.csl
+editor: 
+  markdown: 
+    wrap: 72
+excecute:
+  echo: true
+---
+
+# Introduction, Background & Motivation
+
+# Data Exploration
+
+# Methods
+
+We have decided to scale back our analysis to look at the top 5 states
+with the most gun licenses and compare the gun mortality in those
+states. Once our data has been tested for normality using the Shapiro
+test, we’ll look at the correlation between the variables using the
+Spearman or Pearson tests, depending on whether or not the data is
+normally distributed. Once our data has been tested, we’ll analyze our
+hypothesis using a linear regression model. We could bring in
+supplemental data involving parameters like state population and income
+as control variables for our model. One potential challenge in the data
+is choosing which variables to use for our analysis. The CDC gun
+mortality data set includes both the death rate as a percentage and the
+total number of deaths for each state. The World Population Review data
+set for gun ownership includes the percentage of households that own
+guns and gun ownership licenses in each state. Choosing the correct
+variable for our analysis is important to prevent our data from skewing,
+hence why adding a state population data set may be beneficial.
+
+It would be best for us to conduct our analysis using per capita values,
+as those will give us more accurate representations of each state's gun
+mortality and gun ownership rates. Some challeneges in the methods would
+be the lack of in-depth analysis. Due to our variables expected strong,
+postive correlation, there is only so much analysis we can do. This is
+another reason why adding another data set could prove to be useful. Our
+current selected methods will allow us to examine out hypothesis in the
+most direct manner, and our correlations will be easy to see in graphs
+and figures with a linear regression model. The methods we have outlined
+provide the most streamline analysis, and will allow us to reach our
+goal of proving our hypothesis efficiently.
