@@ -161,7 +161,7 @@ div.csl-indent {
 </section>
 <section id="data-exploration" class="level1">
 <h1>Data Exploration</h1>
-<p>Two datasets were used in the research project, which were both obtained by the Centers for Disease Control &amp; Prevention and the World Population Review. Our data from the Centers for Disease Control and &amp; Prevention provides us with information related to deaths per state and mortality rate. The World Population Review gives us information related to gun ownership that we can use to analyze how the gun ownership percentage in homes per state impacts the mortality rate. A full join was used in our data-cleaning process to allow analysis to be done between the data in the different datasets. The data sets were cleaned beforehand in Excel. Both data sets were manipulated to include a year (2022) and state column with matching variable names (AK changed to Alaska, etc). Information not needed for our analysis, like the URLs column in the gun mortality data set, was removed for clarity. Data was also cleaned in R Studio, using read.csv tools. The data was imported into R where a full join was used to turn our semi-cleaned data into one dataset, renaming tools were used to make column category names less confusing and shorter. Filtering tools were used to ensure that only the 50 states are included in the dataset, such as the District of Columbia, which is already in the dataset from Washington. From our full join, some data didn’t carry over, which resulted in the manual importing of data points into the dataframe. Finally, the data was arranged based on highest to lowest gun ownership per household percentage, then a head command was used to filter the data to 5 states.&nbsp;</p>
+<p>Two datasets were used in the research project, which were both obtained by the Centers for Disease Control &amp; Prevention and the World Population Review. Our data from the Centers for Disease Control &amp; Prevention provides us with information related to deaths per state and mortality rate. The World Population Review gives us information related to gun ownership that we can use to analyze how the gun ownership percentage in homes per state impacts the mortality rate. A full join was used in our data-cleaning process to allow analysis to be done between the data in the different datasets. The data sets were cleaned beforehand in Excel. Both data sets were manipulated to include a year (2022) and state column with matching variable names (AK changed to Alaska, etc). Information not needed for our analysis, like the URLs column in the gun mortality data set, was removed for clarity. Data was also cleaned in R Studio, using read.csv tools. The data was imported into R where a full join was used to turn our semi-cleaned data into one dataset, renaming tools were used to make column category names less confusing and shorter. Filtering tools were used to ensure that only the 50 states are included in the dataset, such as the District of Columbia, which is already in the dataset from Washington. From our full join, some data didn’t carry over, which resulted in the manual importing of data points into the dataframe. Finally, the data was arranged based on highest to lowest gun ownership per household percentage, then a head command was used to filter the data to 5 states.&nbsp;</p>
 <p>For visualizations and tests, a ggbarplot was first created to visualize the relationship of interest between household gun ownership and death rates, This relationship was measured by grouping household gun ownership % by state, with the color of the ggbarplot being the death rate in states. This visualization showed that the top 5 states had a similar death rate as well as gun ownership rate.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -172,7 +172,7 @@ div.csl-indent {
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-1" href="index-preview.html">Source: Article Notebook</a></div>
-<p>A Shapiro test was used to determine if there was normal distribution within our desired data which showed that the null hypothesis was not rejected which tells us that there is a normal distribution within our data that will be used for future analysis.</p>
+<p>A Shapiro test was used to determine if there was normal distribution within our desired data. It showed that the null hypothesis was not rejected which tells us that there is a normal distribution within our data that will be used for future analysis.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -189,7 +189,7 @@ data:  gun_data_con$Death_Rate
 W = 0.92511, p-value = 0.5634</code></pre>
 </div>
 </div>
-<p>Based on this, linear regression was used to test for a relationship between our desired variables, this test rejected the null hypothesis, which suggests that there is a statistically significant relationship between gun ownership % per household and death rate. The R-squared value was in the 80% range, which tells us that there is a strong relationship between our variables. With this, a scatter plot was made with a best-fit line highlighting the residuals within the data relative to the best-fit line. Data may be more strongly correlated, but due to the sample size, it appears as being less correlated.&nbsp;</p>
+<p>Based on this, a linear regression was used to test for a relationship between our desired variables. This test rejected the null hypothesis, which suggests that there is a statistically significant relationship between gun ownership % per household and death rate. The R-squared value was in the 80% range, which tells us that there is a strong relationship between our variables. With this, a scatter plot was made with a best-fit line highlighting the residuals within the data relative to the best-fit line. Data may be more strongly correlated, but due to the sample size, it appears as being less correlated.&nbsp;</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -660,7 +660,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
