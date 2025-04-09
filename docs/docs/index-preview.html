@@ -1,48 +1,171 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.5.57">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Comparing Firearm Mortality to Firearm Ownership by State</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
+    <title>Comparing Firearm Mortality to Firearm Ownership by State</title>
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      /* CSS for citations */
+      div.csl-bib-body { }
+      div.csl-entry {
+        clear: both;
+        margin-bottom: 0em;
+      }
+      .hanging-indent div.csl-entry {
+        margin-left:2em;
+        text-indent:-2em;
+      }
+      div.csl-left-margin {
+        min-width:2em;
+        float:left;
+      }
+      div.csl-right-inline {
+        margin-left:2em;
+        padding-left:1em;
+      }
+      div.csl-indent {
+        margin-left: 2em;
+      }    </style>
+
+    <style>
+      body.hypothesis-enabled #quarto-embed-header {
+        padding-right: 36px;
+      }
+
+      #quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+
+      #quarto-embed-header h6 {
+        font-size: 1.1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 400;
+      }
+
+      #quarto-embed-header a.quarto-back-link,
+      #quarto-embed-header a.quarto-download-embed {
+        font-size: 0.8em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      .quarto-back-container {
+        padding-left: 0.5em;
+        display: flex;
+      }
+
+      .headroom {
+          will-change: transform;
+          transition: transform 200ms linear;
+      }
+
+      .headroom--pinned {
+          transform: translateY(0%);
+      }
+
+      .headroom--unpinned {
+          transform: translateY(-100%);
+      }      
+    </style>
+
+    <script>
+    window.document.addEventListener("DOMContentLoaded", function () {
+
+      var header = window.document.querySelector("#quarto-embed-header");
+      const titleBannerEl = window.document.querySelector("body > #title-block-header");
+      if (titleBannerEl) {
+        titleBannerEl.style.paddingTop = header.clientHeight + "px";
+      }
+      const contentEl = window.document.getElementById('quarto-content');
+      for (const child of contentEl.children) {
+        child.style.paddingTop = header.clientHeight + "px";
+        child.style.marginTop = "1em";
+      }
+
+      // Use the article root if the `back` call doesn't work. This isn't perfect
+      // but should typically work
+      window.quartoBackToArticle = () => {
+        var currentUrl = window.location.href;
+        window.history.back();
+        setTimeout(() => {
+            // if location was not changed in 100 ms, then there is no history back
+            if(currentUrl === window.location.href){              
+                // redirect to site root
+                window.location.href = "index.html";
+            }
+        }, 100);
+      }
+
+      const headroom = new window.Headroom(header, {
+        tolerance: 5,
+        onPin: function () {
+        },
+        onUnpin: function () {
+        },
+      });
+      headroom.init();
+    });
+    </script>
+
+    
+<script src="site_libs/manuscript-notebook/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -56,15 +179,13 @@ div.csl-indent {
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script async="" src="https://hypothes.is/embed.js"></script>
+     <script async="" src="https://hypothes.is/embed.js"></script>
 <script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-
-<meta name="citation_title" content="Comparing Firearm Mortality to Firearm Ownership by State">
+</script>  
+      <meta name="citation_title" content="Comparing Firearm Mortality to Firearm Ownership by State">
 <meta name="citation_author" content="Grace Rinehart">
 <meta name="citation_author" content="Kendall Landwehr">
 <meta name="citation_author" content="Andrew Zimbelman">
@@ -74,9 +195,16 @@ div.csl-indent {
 <meta name="citation_reference" content="citation_title=Guns in america: What do the data tell us?;,citation_author=Peter Fortune;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;">
 </head>
 
-<body>
+  <body class="quarto-notebook">
+    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
+      
+      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
+      <h6><i class="bi bi-journal-code"></i> Article Notebook</h6>
 
-<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+            <a href="./index.qmd" class="btn btn-primary quarto-download-embed" download="index.qmd">Download Source</a>
+          </div>
+
+     <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Comparing Firearm Mortality to Firearm Ownership by State</h1>
@@ -123,7 +251,7 @@ div.csl-indent {
               </div>
       </div>
       <div class="quarto-title-meta-column-end quarto-other-formats-target">
-      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="index-meca.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+      </div>
     </div>
 
 
@@ -140,18 +268,13 @@ div.csl-indent {
   <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li></ul></div></nav>
+</nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">      
 
-
-
-  
-
-
-<section id="introduction-background-motivation" class="level1">
+       <section id="introduction-background-motivation" class="level1">
 <h1>Introduction, Background &amp; Motivation</h1>
 <p>Through this study, we hope to address and provide increased analysis of the problem of firearm mortality in the United States. Gun violence is a major safety, social, and public health problem within the United States and requires additional investigation. The current literature suggests that within developed nations and other high income countries, the U.S. is an outlier in its rates of gun mortality. Initially linked to America’s frontier history and culture of citizen-owned guns, the U.S. continues to protect this 2nd amendment right and tradition of freedom, protection, and spirit of rebellion (<span class="citation" data-cites="fortune2018guns">Fortune (<a href="#ref-fortune2018guns" role="doc-biblioref">2018</a>)</span>). While a constitutional right, it may also be important to consider the needs of present-day society and how this right can be protected, yet regulated for a safer future. The large proportion of gun violence, mass shootings, and firearm mortality can partially be attributed to the weapon instrumentality effect. This is the hypothesis that the presence of guns leads to higher levels of violence, aggression, and lethal action when faced with a stressful or conflictual situation (<span class="citation" data-cites="spieller2020gun">Spieller (<a href="#ref-spieller2020gun" role="doc-biblioref">2020</a>)</span>). While some argue that aggression and violence will occur regardless of the weapon used, the capacity for lethality also has to be considered. It is much easier to unintentionally harm someone with a firearm than a knife, for instance. Understanding the relationship between firearm ownership and firearm mortality through this study will contribute to this system of thinking. If the hypothesis that firearm ownership and firearm mortality are positively correlated, this study can serve as further evidence that additional firearm restrictions should be implemented to protect everyday American people.&nbsp;</p>
 <p>Within the U.S., gun mortality continues to be a major problem for its population, contributing to both mortality and morbidity. In 2020 alone, the Centers for Disease Control reported 45,000 firearm-related deaths with a rate of 6.1 deaths per 100,000 people. This is the highest reported rate since 1994 with 40% of deaths due to homicide and more than half due to suicide (<span class="citation" data-cites="fontanarosa2022unrelenting">Fontanarosa &amp; Bibbins-Domingo (<a href="#ref-fontanarosa2022unrelenting" role="doc-biblioref">2022</a>)</span>). Access to firearms is also shifting suicide rates and the proportion of suicide deaths by firearm. Within the 45,222 firearm deaths in 2020, 60% of those were due to suicide. Similarly, among the 45,979 suicide deaths in the same year, 51% of those were from a firearm injury (<span class="citation" data-cites="fontanarosa2022unrelenting">Fontanarosa &amp; Bibbins-Domingo (<a href="#ref-fontanarosa2022unrelenting" role="doc-biblioref">2022</a>)</span>). These statistics present a clear need for additional firearm regulation. Our study hopes to provide further evidence by illustrating a correlation between firearm ownership and firearm mortality from the Centers for Disease Control and Prevention and the World Population Review.&nbsp;</p>
@@ -162,18 +285,114 @@ div.csl-indent {
 <section id="data-exploration" class="level1">
 <h1>Data Exploration</h1>
 <p>Two datasets were used in the research project, which were both obtained by the Centers for Disease Control &amp; Prevention and the World Population Review. Our data from the Centers for Disease Control and &amp; Prevention provides us with information related to deaths per state and mortality rate. The World Population Review gives us information related to gun ownership that we can use to analyze how the gun ownership percentage in homes per state impacts the mortality rate. A full join was used in our data-cleaning process to allow analysis to be done between the data in the different datasets. The data sets were cleaned beforehand in Excel. Both data sets were manipulated to include a year (2022) and state column with matching variable names (AK changed to Alaska, etc). Information not needed for our analysis, like the URLs column in the gun mortality data set, was removed for clarity. Data was also cleaned in R Studio, using read.csv tools. The data was imported into R where a full join was used to turn our semi-cleaned data into one dataset, renaming tools were used to make column category names less confusing and shorter. Filtering tools were used to ensure that only the 50 states are included in the dataset, such as the District of Columbia, which is already in the dataset from Washington. From our full join, some data didn’t carry over, which resulted in the manual importing of data points into the dataframe. Finally, the data was arranged based on highest to lowest gun ownership per household percentage, then a head command was used to filter the data to 5 states.&nbsp;</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.2.0 ──</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ broom        1.0.7     ✔ rsample      1.2.1
+✔ dials        1.3.0     ✔ tibble       3.2.1
+✔ infer        1.0.7     ✔ tidyr        1.3.1
+✔ modeldata    1.4.0     ✔ tune         1.2.1
+✔ parsnip      1.2.1     ✔ workflows    1.1.4
+✔ purrr        1.0.2     ✔ workflowsets 1.1.0
+✔ recipes      1.1.0     ✔ yardstick    1.3.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+✖ purrr::compose()  masks flextable::compose()
+✖ purrr::discard()  masks scales::discard()
+✖ dplyr::filter()   masks stats::filter()
+✖ dplyr::lag()      masks stats::lag()
+✖ yardstick::spec() masks readr::spec()
+✖ recipes::step()   masks stats::step()
+• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ggpubr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:flextable':
+
+    border, font, rotate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gun_mortality_2022 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/gun_mortality_2022.csv"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>gun_ownership_2022 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/gun_ownership_2022.csv"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>gun_data <span class="ot">&lt;-</span> <span class="fu">full_join</span>(gun_mortality_2022, gun_ownership_2022, <span class="at">by =</span> <span class="st">'STATE'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>gun_data <span class="ot">&lt;-</span> gun_data <span class="sc">|&gt;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="fu">c</span>(<span class="at">Year =</span> YEAR.x,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">State =</span> STATE,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">Death_Rate =</span> RATE, </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">Deaths =</span> DEATHS,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">Household_pct_ownership =</span> GunOwnership_PercentageOfHouseholdsThatOwnGuns_pct_2022,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">GunOwnership =</span> GunOwnership_NumOfGunLicenses_num_2022))<span class="sc">|&gt;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(State,Death_Rate,Deaths,Household_pct_ownership,GunOwnership,Year)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>gun_data <span class="ot">&lt;-</span> gun_data <span class="sc">|&gt;</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (State <span class="sc">!=</span> <span class="st">"District of Columbia"</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing all values that didn't transfer over from the join</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">51</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">797</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">51</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">19.8</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">52</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">830</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">52</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">14.0</span>)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">53</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">1316</span>)</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">53</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">14.9</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">36</span>,<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">54.7</span>)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">36</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">103368</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">46</span>,<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">44.6</span>)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">46</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">423707</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">49</span>,<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">45.3</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">49</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">95430</span>)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">51</span>,<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">2022</span>)</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">52</span>,<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">2022</span>)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>gun_data[<span class="dv">53</span>,<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">2022</span>)</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>gun_data <span class="ot">&lt;-</span> gun_data<span class="sc">|&gt;</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>Household_pct_ownership)</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>gun_data_con <span class="ot">&lt;-</span> gun_data <span class="sc">|&gt;</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>Household_pct_ownership) <span class="sc">|&gt;</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 <p>For visualizations and tests, a ggbarplot was first created to visualize the relationship of interest between household gun ownership and death rates, This relationship was measured by grouping household gun ownership % by state, with the color of the ggbarplot being the death rate in states. This visualization showed that the top 5 states had a similar death rate as well as gun ownership rate.</p>
-<div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot1<span class="ot">&lt;-</span> gun_data_con <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbarplot</span>(<span class="at">x =</span> <span class="st">'State'</span>, <span class="at">y =</span> <span class="st">'Household_pct_ownership'</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"Death_Rate"</span>) </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p class=""><a href="index_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="index-preview.html">Source: Article Notebook</a></div>
+</div></div>
 <p>A Shapiro test was used to determine if there was normal distribution within our desired data which showed that the null hypothesis was not rejected which tells us that there is a normal distribution within our data that will be used for future analysis.</p>
-<div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(gun_data_con<span class="sc">$</span>Household_pct_ownership)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -181,6 +400,7 @@ div.csl-indent {
 data:  gun_data_con$Household_pct_ownership
 W = 0.85262, p-value = 0.2029</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(gun_data_con<span class="sc">$</span>Death_Rate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -188,16 +408,29 @@ W = 0.85262, p-value = 0.2029</code></pre>
 data:  gun_data_con$Death_Rate
 W = 0.92511, p-value = 0.5634</code></pre>
 </div>
-</div>
+</div></div>
 <p>Based on this, linear regression was used to test for a relationship between our desired variables, this test rejected the null hypothesis, which suggests that there is a statistically significant relationship between gun ownership % per household and death rate. The R-squared value was in the 80% range, which tells us that there is a strong relationship between our variables. With this, a scatter plot was made with a best-fit line highlighting the residuals within the data relative to the best-fit line. Data may be more strongly correlated, but due to the sample size, it appears as being less correlated.&nbsp;</p>
-<div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(gun_data_con, <span class="fu">aes</span>(<span class="at">x =</span> Household_pct_ownership, <span class="at">y =</span> Death_Rate)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">color =</span> <span class="st">'red'</span>) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gun % Per Household"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Death Rate"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relationship Between gun % Per Household and Death Rate "</span>) <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p class=""><a href="index_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>linear_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Household_pct_ownership <span class="sc">~</span> Death_Rate, <span class="at">data =</span> gun_data_con)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -218,16 +451,13 @@ Residual standard error: 1.769 on 3 degrees of freedom
 Multiple R-squared:  0.8193,    Adjusted R-squared:  0.7591 
 F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
-</div>
+</div></div>
 </section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
 <p>We have decided to scale back our analysis to look at the top 5 states with the most gun licenses and compare the gun mortality in those states. Once our data has been tested for normality using the Shapiro test, we’ll look at the correlation between the variables using the Spearman or Pearson tests, depending on whether or not the data is normally distributed. Once our data has been tested, we’ll analyze our hypothesis using a linear regression model. We could bring in supplemental data involving parameters like state population and income as control variables for our model. One potential challenge in the data is choosing which variables to use for our analysis.&nbsp;The CDC gun mortality data set includes both the death rate as a percentage and the total number of deaths for each state. The World Population Review data set for gun ownership includes the percentage of households that own guns and gun ownership licenses in each state. Choosing the correct variable for our analysis is important to prevent our data from skewing, hence why adding a state population data set may be beneficial.</p>
 <p>It would be best for us to conduct our analysis using per capita values, as those will give us more accurate representations of each state’s gun mortality and gun ownership rates. Some challenges in the methods would be the lack of in-depth analysis. Due to our variables expected strong, positive correlation, there is only so much analysis we can do. This is another reason why adding another data set could prove to be useful. Our current selected methods will allow us to examine out hypothesis in the most direct manner, and our correlations will be easy to see in graphs and figures with a linear regression model. The methods we have outlined provide the most streamline analysis, and will allow us to reach our goal of proving our hypothesis efficiently.</p>
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-fontanarosa2022unrelenting" class="csl-entry" role="listitem">
 Fontanarosa, P. B., &amp; Bibbins-Domingo, K. (2022). The unrelenting epidemic of firearm violence. <em>JAMA</em>, <em>328</em>(12), 1201–1203.
 </div>
@@ -237,9 +467,10 @@ Fortune, P. (2018). <em>Guns in america: What do the data tell us?</em>
 <div id="ref-spieller2020gun" class="csl-entry" role="listitem">
 Spieller, L. (2020). Gun control in america: A global comparison. <em>Themis: Research Journal of Justice Studies and Forensic Science</em>, <em>8</em>(1), 7.
 </div>
-</div></section></div></main>
-<!-- /main column -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div>
+</section>
+     </main>
+<!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -658,9 +889,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-</div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
@@ -691,9 +920,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   };
   
 })();
-          </script>
-
-
-
-
+          </script> 
+  
 </body></html>
