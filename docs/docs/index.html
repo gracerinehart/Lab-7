@@ -136,9 +136,11 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction-background-motivation" id="toc-introduction-background-motivation" class="nav-link active" data-scroll-target="#introduction-background-motivation">Introduction, Background &amp; Motivation</a></li>
-  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li></ul></div></nav>
 </div>
@@ -151,18 +153,19 @@ div.csl-indent {
   
 
 
-<section id="introduction-background-motivation" class="level1">
-<h1>Introduction, Background &amp; Motivation</h1>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
 <p>Through this study, we hope to address and provide increased analysis of the problem of firearm mortality in the United States. Gun violence is a major safety, social, and public health problem within the United States and requires additional investigation. The current literature suggests that within developed nations and other high income countries, the U.S. is an outlier in its rates of gun mortality. Initially linked to America’s frontier history and culture of citizen-owned guns, the U.S. continues to protect this 2nd amendment right and tradition of freedom, protection, and spirit of rebellion (<span class="citation" data-cites="fortune2018guns">Fortune (<a href="#ref-fortune2018guns" role="doc-biblioref">2018</a>)</span>). While a constitutional right, it may also be important to consider the needs of present-day society and how this right can be protected, yet regulated for a safer future. The large proportion of gun violence, mass shootings, and firearm mortality can partially be attributed to the weapon instrumentality effect. This is the hypothesis that the presence of guns leads to higher levels of violence, aggression, and lethal action when faced with a stressful or conflictual situation (<span class="citation" data-cites="spieller2020gun">Spieller (<a href="#ref-spieller2020gun" role="doc-biblioref">2020</a>)</span>). While some argue that aggression and violence will occur regardless of the weapon used, the capacity for lethality also has to be considered. It is much easier to unintentionally harm someone with a firearm than a knife, for instance. Understanding the relationship between firearm ownership and firearm mortality through this study will contribute to this system of thinking. If the hypothesis that firearm ownership and firearm mortality are positively correlated, this study can serve as further evidence that additional firearm restrictions should be implemented to protect everyday American people.&nbsp;</p>
 <p>Within the U.S., gun mortality continues to be a major problem for its population, contributing to both mortality and morbidity. In 2020 alone, the Centers for Disease Control reported 45,000 firearm-related deaths with a rate of 6.1 deaths per 100,000 people. This is the highest reported rate since 1994 with 40% of deaths due to homicide and more than half due to suicide (<span class="citation" data-cites="fontanarosa2022unrelenting">Fontanarosa &amp; Bibbins-Domingo (<a href="#ref-fontanarosa2022unrelenting" role="doc-biblioref">2022</a>)</span>). Access to firearms is also shifting suicide rates and the proportion of suicide deaths by firearm. Within the 45,222 firearm deaths in 2020, 60% of those were due to suicide. Similarly, among the 45,979 suicide deaths in the same year, 51% of those were from a firearm injury (<span class="citation" data-cites="fontanarosa2022unrelenting">Fontanarosa &amp; Bibbins-Domingo (<a href="#ref-fontanarosa2022unrelenting" role="doc-biblioref">2022</a>)</span>). These statistics present a clear need for additional firearm regulation. Our study hopes to provide further evidence by illustrating a correlation between firearm ownership and firearm mortality from the Centers for Disease Control and Prevention and the World Population Review.&nbsp;</p>
-<p>This study will use one dataset from the Centers for Disease Control and Prevention (<a href="https://www.cdc.gov/nchs/pressroom/sosmap/firearm_mortality/firearm.htm">data</a>) and one from the World Population Review (<a href="https://worldpopulationreview.com/state-rankings/gun-ownership-by-state#sources">data</a>). The CDC dataset provides information on firearm mortality by state and this study will specifically focus on data from the year 2022. The firearm mortality data includes the number of deaths and death rate per state. More specifically, the death rate is the number of deaths per 100,000 total population. The data also ranks each of the states according to their mortality rate. Additionally, the CDC provides a visual representation of the state ranking displayed on a map of the U.S. using a gradient.&nbsp;</p>
-<p>The dataset used for firearm ownership will be provided by the World Population Review and is originally from the Pew Research Center. This source provides information on gun ownership as a percentage of households that own guns within each state. Additionally, data was collected on gun ownership licenses. It should be noted that the varying gun regulations on gun ownership throughout the country make it difficult to obtain exact numbers for firearm ownership, however, the Pew Research Center has compiled accurate and reliable data given this limitation. It is also important to note that while one state may have more guns, they may also have a higher population. Because of this, it is important to make the distinction that data is based on the total percentage of firearm ownership in relation to each state’s population. Based on the data, some general trends can be noted. Gun ownership is highest in the South with about 36% of residents owning a gun. The West and Midwest each have ownership rates of around 30%, and the Northeast has the lowest rates of gun ownership with about 16% of residents in the region owning a firearm. Moreover, individuals in rural communities have the highest rates of firearm ownership and men are more likely to own a firearm than women. Similar to the firearm mortality data, this source also provides a visual representation of its data, organized on a map of the United States along a gradient according to ownership percentage.&nbsp;</p>
-<p>Regarding the methods for this study, our data will first be cleaned and organized so it is more compatible with the functions within R studio. This study will narrow its scope to the year 2022 and focus specifically on the top five states with the highest percentage of firearm ownership. From here we will join the two data sets by state and conduct multiple statistical tests to identify the relationship between the two variables. More specifically, we will use the Shapiro test to test for normality, followed by the Spearman or Pearson test to analyze correlation. A linear regression model will also be used. After the necessary statistics have been run, we will develop ways to visualize and display the correlation using the ggplot package.</p>
 </section>
-<section id="data-exploration" class="level1">
-<h1>Data Exploration</h1>
-<p>Two datasets were used in the research project, which were both obtained by the Centers for Disease Control &amp; Prevention and the World Population Review. Our data from the Centers for Disease Control &amp; Prevention provides us with information related to deaths per state and mortality rate. The World Population Review gives us information related to gun ownership that we can use to analyze how the gun ownership percentage in homes per state impacts the mortality rate. A full join was used in our data-cleaning process to allow analysis to be done between the data in the different datasets. The data sets were cleaned beforehand in Excel. Both data sets were manipulated to include a year (2022) and state column with matching variable names (AK changed to Alaska, etc). Information not needed for our analysis, like the URLs column in the gun mortality data set, was removed for clarity. Data was also cleaned in R Studio, using read.csv tools. The data was imported into R where a full join was used to turn our semi-cleaned data into one dataset, renaming tools were used to make column category names less confusing and shorter. Filtering tools were used to ensure that only the 50 states are included in the dataset, such as the District of Columbia, which is already in the dataset from Washington. From our full join, some data didn’t carry over, which resulted in the manual importing of data points into the dataframe. Finally, the data was arranged based on highest to lowest gun ownership per household percentage, then a head command was used to filter the data to 5 states.&nbsp;</p>
-<p>For visualizations and tests, a ggbarplot was first created to visualize the relationship of interest between household gun ownership and death rates, This relationship was measured by grouping household gun ownership % by state, with the color of the ggbarplot being the death rate in states. This visualization showed that the top 5 states had a similar death rate as well as gun ownership rate.</p>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<p>Two datasets were used in the research project, which were obtained from the Centers for Disease Control and the World Population Review. The data sets were semi-cleaned beforehand in Excel. Both data sets were manipulated to include a year (2022) and state column with matching variable names (AK changed to Alaska, etc). Information not needed for analysis, like the URLs column in the gun mortality data set, was removed for clarity. Once in R Studio, a full join was used to combine the data sets for analysis. A final cleaning took place in R, where renaming tools were used to make column category names clear and concise. Filtering tools were used to ensure that only the 50 states were included in the dataset, such as the District of Columbia, which is already in the dataset from Washington. From the full join, some data didn’t carry over, which resulted in the manual importing of data points into the dataframe. Finally, the data was arranged based on the highest to lowest gun ownership per household percentage.</p>
+<p>First, a Shapiro test was conducted to test for normality in the data. Once the data was determined to be normally distributed, a Pearson test was used to look at the correlation between household gun ownership percentage and mortality rate. Then, a linear regression model was used to compare the top five states with the highest gun ownership to their mortality rates. Finally, another linear regression model was used to compare the top five states to the rest of the dataset to look for correlations and assumptions.</p>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<p>Data Visualization tools were used to give a general idea of the shortened dataset. Using the barplot function, a barplot was made with the state as the x variable, and gun ownership % as the y variable. Barplot color was based on death rates using the fill function, where lower death rates were a darker blue, and higher death rates were a lighter blue. Using barplots allowed the visualization data distribution before the utilization of the Shapiro-Wilk test.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -172,7 +175,7 @@ div.csl-indent {
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-1" href="index-preview.html">Source: Article Notebook</a></div>
-<p>A Shapiro test was used to determine if there was normal distribution within our desired data. It showed that the null hypothesis was not rejected which tells us that there is a normal distribution within our data that will be used for future analysis.</p>
+<p>Multiple results were determined from the analysis of the shortened dataset. It was determined through Shapiro-Wilk tests that both gun ownership percentage &amp; death rate had a p value greater than 0.05, with a p value of 0.2029 for gun ownerhsip percentage among households, and a p value of 0.5634 for death rates.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -189,8 +192,11 @@ data:  gun_data_con$Death_Rate
 W = 0.92511, p-value = 0.5634</code></pre>
 </div>
 </div>
-<p>Based on this, a linear regression was used to test for a relationship between our desired variables. This test rejected the null hypothesis, which suggests that there is a statistically significant relationship between gun ownership % per household and death rate. The R-squared value was in the 80% range, which tells us that there is a strong relationship between our variables. With this, a scatter plot was made with a best-fit line highlighting the residuals within the data relative to the best-fit line. Data may be more strongly correlated, but due to the sample size, it appears as being less correlated.&nbsp;</p>
+<p>Our Pearson method correlation test showed that the variables Household_pct_ownership and Death_Rate had a correlation value of 0.905. The Pearson correlation method was used because the sample data followed a normal distribution. Plotting of Household_pct_ownership on the x-axis and Death_Rate on the y-axis using a ggplot function allowed for visualization of this relationship. A linear regression using death_rate as our predicted variable, and household percent as our predictor variable, was used to determine p value and r squared values to determine if a linear relationship existed. With our sample data being the data used, the model provided a p value of 0.03455, and an R-squared value of 0.7591&nbsp;</p>
 <div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.905166</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -201,7 +207,30 @@ W = 0.92511, p-value = 0.5634</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = Household_pct_ownership ~ Death_Rate, data = gun_data_con)
+lm(formula = Death_Rate ~ Household_pct_ownership, data = gun_data_con)
+
+Residuals:
+      1       2       3       4       5 
+ 1.2544 -2.1618  1.2632 -0.4485  0.0927 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)             -32.9301    14.3636  -2.293   0.1057  
+Household_pct_ownership   0.8382     0.2273   3.688   0.0346 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.638 on 3 degrees of freedom
+Multiple R-squared:  0.8193,    Adjusted R-squared:  0.7591 
+F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
+</div>
+</div>
+<p>A predicted graph was made to visualize the relationship between gun ownership per household and death rate to determine the accuracy of our model. Using lm(household_pct_ownership ~ death_rate, data = gun_data_con) representing the cleaned dataset with the top 5 states for gun ownership, this fit was applied to the full cleaned dataset and was then visualized. This visualization found that datapoints that had lower gun ownership percentages had higher residual values than those with higher gun ownership %.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Household_pct_ownership ~ Death_Rate, data = baked_data)
 
 Residuals:
       1       2       3       4       5 
@@ -218,12 +247,41 @@ Residual standard error: 1.769 on 3 degrees of freedom
 Multiple R-squared:  0.8193,    Adjusted R-squared:  0.7591 
 F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-5-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-5-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="index_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="methods" class="level1">
-<h1>Methods</h1>
-<p>We have decided to scale back our analysis to look at the top 5 states with the most gun licenses and compare the gun mortality in those states. Once our data has been tested for normality using the Shapiro test, we’ll look at the correlation between the variables using the Spearman or Pearson tests, depending on whether or not the data is normally distributed. Once our data has been tested, we’ll analyze our hypothesis using a linear regression model. We could bring in supplemental data involving parameters like state population and income as control variables for our model. One potential challenge in the data is choosing which variables to use for our analysis.&nbsp;The CDC gun mortality data set includes both the death rate as a percentage and the total number of deaths for each state. The World Population Review data set for gun ownership includes the percentage of households that own guns and gun ownership licenses in each state. Choosing the correct variable for our analysis is important to prevent our data from skewing, hence why adding a state population data set may be beneficial.</p>
-<p>It would be best for us to conduct our analysis using per capita values, as those will give us more accurate representations of each state’s gun mortality and gun ownership rates. Some challenges in the methods would be the lack of in-depth analysis. Due to our variables expected strong, positive correlation, there is only so much analysis we can do. This is another reason why adding another data set could prove to be useful. Our current selected methods will allow us to examine out hypothesis in the most direct manner, and our correlations will be easy to see in graphs and figures with a linear regression model. The methods we have outlined provide the most streamline analysis, and will allow us to reach our goal of proving our hypothesis efficiently.</p>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<p>After completing our analysis, the results show a strong correlation between gun ownership and gun mortality when focused specifically on the five states with the highest levels of ownership. The top five states for gun ownership were Montana, Wyoming, Alaska, Idaho, and West Virginia. Based on the Pearson test, the two variables, firearm ownership and firearm mortality, show a high correlation. The resulting correlation value of 0.905 is very close to 1, showing a strong positive correlation between the two variables. Given the results of this test, it made sense to complete a linear regression. From the linear regression, a p-value of 0.03455 was produced. This shows statistical significance because the value is below 0.05. Additionally, the resulting r-squared value of 0.7591 is between the range of 0.7-0.99, showing significance. In essence, our results show that there is a strong positive correlation between firearm ownership and firearm mortality. Owning a firearm is a direct contributing factor to deaths caused by firearms, at least at the state level.&nbsp;</p>
+<p>In terms of the broader implications of this study, these results may be used as evidence for further reform to firearm ownership requirements in the United States. More restrictions on the number of firearms one person may own could help reduce the number of firearm-related deaths seen in these areas. Additionally, enacting common-sense gun laws that require additional screenings for gun purchasing and the types of firearms available to the public may be necessary. For instance, placing restrictions on the type of firearms available for public purchase could limit the number of deaths resulting from automatic rifles per region. If the states with fewer firearms have fewer deaths caused by firearms, it makes sense to place limits and additional restrictions on the number of firearms one may possess.&nbsp;</p>
+<p>In terms of areas for improvement, this study contains a few limitations. One limitation would be the scope of this project. For simplicity’s sake, our project focused on the top five states with the highest levels of gun ownership. However, given that there are 50 states within the United States, this means only 10 percent of the total states were included in the analysis. In future analysis, more, if not all, of the states could be included to gain a more complete understanding of the correlation present. Alternatively, in addition to the top five states for ownership, this study could have included the bottom 5 states for ownership to provide a comparison at the other end of the spectrum. Additionally, our study is limited in terms of supplemental data sets. While this study provides a clear correlation between gun ownership and gun mortality, it is lacking in additional variables and contributing factors. For instance, population density could be a contributing factor to this relationship. Do areas with a higher population density have more or less firearm mortality as a result? This might be an important topic to investigate in further studies.&nbsp;&nbsp;</p>
+<p>Furthermore, this study relates to the broader field of data science by showing how data science can be employed as a tool to inform social issues. This type of study is important as it takes raw data and transforms it into something tangible for the public and government leaders to understand. Rather than developing policy decisions purely based on ideas of what might be going on, this study supports reformed gun laws through concrete evidence. This is also a demonstration of how data science can be used to model and address complex, real-world problems such as gun mortality in the United States. Additionally, studies such as this one contribute to clearer communication of results within the scientific community. Being able to produce compelling charts, graphs, and other visualizations makes data easier to digest for a lay audience. For instance, in this study, the graph displaying the linear regression relating firearm ownership and firearm mortality provides a clear representation of this relationship. While the average American may not have knowledge of a Pearson test or even be familiar with the verbiage of a linear regression, they likely have a basic understanding of graphs and can identify a linear relationship. Making studies like this available to the public plays a key role in contributing to informed policy decisions and bridging the gap between data and the real-world implications.&nbsp;</p>
+<p>As for next steps, replication of the Pearson correlation test and linear regression using more states would be ideal. Addressing one of the study’s limitations, this would provide even greater evidence for the correlation identified through this study. At this point, the correlation identified in this study could be used as evidence for reform to the current firearm ownership process. Encouraging restrictions on how many firearms may be purchased by a single individual or requiring additional screenings would be one approach.&nbsp;</p>
+<p>For even greater and potentially more specific evidence, additional variables may be added to this analysis. As aforementioned, population density by state could be an important consideration. If taking this approach, narrowing the region of focus to the county level may also be advantageous. Moreover, data on firearm type could also be studied. Data identifying gun ownership by type of gun (e.g., handgun, hunting rifle, shotgun), as well as semi-automatic and automatic, may be used to provide more specific insight into the firearm regulation needed. For example, if findings illustrate that areas with a higher number of automatic rifles also have the highest number of firearm mortality, this may be used as evidence for placing further restrictions on automatic rifle ownership. If using firearm type as a contributing variable, it may be necessary to also find more specific data on firearm mortality rates. Specifically, within the firearm mortality data, identifying what type of firearm that was responsible for the mortality. With these changes, it may be possible to identify which firearms contribute most to firearm mortality and if there is a correlation between ownership of these types of firearms and mortality caused by them.&nbsp;</p>
+<p>Overall, the statistical tests used and results presented in this study demonstrate a clear positive correlation between firearm ownership and firearm mortality within the top five states for firearm ownership. This study contributes to the growing evidence that further restrictions on firearm ownership are necessary and also serves as a starting point for investigations into other contributing factors of firearm mortality.</p>
+</section>
+<section id="references" class="level1 unnumbered">
+
 
 </section>
 
@@ -660,7 +718,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
