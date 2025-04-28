@@ -234,17 +234,7 @@ summary(lm_pred)
 
 prediction_data <- augment(lm_pred, new_data = gun_data)
 
-plot3 <- prediction_data %>%
- ggplot(aes(x = Household_pct_ownership, y = Death_Rate, col = .resid)) +
-  geom_point(col = "blue") +
-  geom_smooth(method = "lm", col = "red") + 
-  labs(xlab = "Gun Ownership Percentage" , ylab = "Predicted Death Rate", title = "Predicted Death Rate Based on Gun Ownerhsip Percentage")
-print(plot3)
-
 ```
-
-**Figure 5: Predicted death rate based on gun ownership % in top 5
-states.**
 
 ```{r}
 plot4 <- gun_data %>%
@@ -256,7 +246,7 @@ ggplot(aes(x = Household_pct_ownership, y = Death_Rate)) +
 print(plot4)
 ```
 
-**Figure 6: Observed death rate based on gun ownership % in all
+**Figure 5: Observed death rate based on gun ownership % in all
 states.**
 
 ```{r}
@@ -268,7 +258,7 @@ ggplot(aes(x = Household_pct_ownership, y = .fitted)) +
 print(plot5)
 ```
 
-**Figure 7: Predicted death rate values using household ownership %
+**Figure 6: Predicted death rate values using household ownership %
 using linear regression from the top 5 states colored by residuals.**
 
 # Discussion
