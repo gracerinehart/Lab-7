@@ -145,14 +145,11 @@ gun_data_con <- gun_data |>
 
 Data Visualization tools were used to give a general idea of the
 shortened dataset. Using the barplot function, a barplot was made with
-the state as the x variable, and
-gun ownership % as the y variable. Barplot color was based on death
-rates using the
-fill function, where lower death rates were a darker blue, and higher
-death rates were a
+the state as the x variable, and gun ownership % as the y variable.
+Barplot color was based on death rates using the fill function, where
+lower death rates were a darker blue, and higher death rates were a
 lighter blue. Using barplots allowed the visualization data distribution
-before the
-utilization of the Shapiro-Wilk test.
+before the utilization of the Shapiro-Wilk test.
 
 ```{r}
 plot1<- gun_data_con |>
@@ -161,37 +158,50 @@ ggbarplot(x = 'State', y = 'Household_pct_ownership',
 print(plot1)
 ```
 
+**Figure 1: Household gun ownership for top 5 states colored by death
+rate.**
+
 Multiple results were determined from the analysis of the shortened
-dataset. It was
-determined through Shapiro-Wilk tests that both gun ownership percentage
-& death rate had a p value greater than 0.05, with a p value of 0.2029
-for gun ownerhsip
-percentage among households, and a p value of 0.5634 for death rates.
+dataset. It was determined through Shapiro-Wilk tests that both gun
+ownership percentage & death rate had a p value greater than 0.05, with
+a p value of 0.2029 for gun ownerhsip percentage among households, and a
+p value of 0.5634 for death rates.
 
 ```{r}
 shapiro.test(gun_data_con$Household_pct_ownership)
 
 shapiro.test(gun_data_con$Death_Rate)
+
 ```
+
+**Figure 2: Results of the Shapiro-Wilk normality test using the Pearson
+method.**
 
 Our Pearson method correlation test showed that the variables
 Household_pct_ownership and Death_Rate had a correlation value of 0.905.
-The
-Pearson correlation method was used because the sample data followed a
-normal
-distribution. Plotting of Household_pct_ownership on the x-axis and
-Death_Rate on the
-y-axis using a ggplot function allowed for visualization of this
-relationship. A linear regression using death_rate as our predicted
-variable, and household percent as our predictor variable, was used to
-determine p value and r squared values to determine if a linear
-relationship existed. With our sample data being the data used, the
-model provided a p value of 0.03455, and an R-squared value of 0.7591 
+The Pearson correlation method was used because the sample data followed
+a normal distribution. Plotting of Household_pct_ownership on the x-axis
+and Death_Rate on the y-axis using a ggplot function allowed for
+visualization of this relationship. A linear regression using death_rate
+as our predicted variable, and household percent as our predictor
+variable, was used to determine p value and r squared values to
+determine if a linear relationship existed. With our sample data being
+the data used, the model provided a p value of 0.03455, and an R-squared
+value of 0.7591 
 
 ```{r}
 correlation_metric <- cor(gun_data_con$Death_Rate, gun_data_con$Household_pct_ownership,  method = "pearson")
 print(correlation_metric)
 
+linear_mod <- lm(Death_Rate ~ Household_pct_ownership, data = gun_data_con)
+summary(linear_mod)
+
+```
+
+**Figure 3: Summary results on linear regression model using gun
+ownership as a predictor for death rate.**
+
+```{r}
 plot2 <- ggplot(gun_data_con, aes(x = Household_pct_ownership, y = Death_Rate)) +
   geom_point() +
   geom_smooth(method = lm, color = 'red') +
@@ -200,10 +210,10 @@ plot2 <- ggplot(gun_data_con, aes(x = Household_pct_ownership, y = Death_Rate)) 
        title = "Relationship Between gun % Per Household and Death Rate ") +
   theme_linedraw()
 print(plot2)
-
-linear_mod <- lm(Death_Rate ~ Household_pct_ownership, data = gun_data_con)
-summary(linear_mod)
 ```
+
+**Figure 4: Relationship between death rate and gun ownership % per
+household.**
 
 A predicted graph was made to visualize the relationship between gun
 ownership per household and death rate to determine the accuracy of our
@@ -231,6 +241,12 @@ plot3 <- prediction_data %>%
   labs(xlab = "Gun Ownership Percentage" , ylab = "Predicted Death Rate", title = "Predicted Death Rate Based on Gun Ownerhsip Percentage")
 print(plot3)
 
+```
+
+**Figure 5: Predicted death rate based on gun ownership % in top 5
+states.**
+
+```{r}
 plot4 <- gun_data %>%
 ggplot(aes(x = Household_pct_ownership, y = Death_Rate)) +
   geom_point(col = "blue") +
@@ -238,35 +254,42 @@ ggplot(aes(x = Household_pct_ownership, y = Death_Rate)) +
   labs(xlab = "Gun Ownership Percentage", ylab = "Observed Death Rate", 
          title = "Observed Death Rate Based on Gun Ownership Percentage")
 print(plot4)
+```
 
+**Figure 6: Observed death rate based on gun ownership % in all
+states.**
+
+```{r}
 pred_data <- augment(linear_mod, newdata = gun_data)
 
 plot5 <- pred_data %>%
 ggplot(aes(x = Household_pct_ownership, y = .fitted)) +
   geom_point(aes(color = .resid))
 print(plot5)
-
-
 ```
+
+**Figure 7: Predicted death rate values using household ownership %
+using linear regression from the top 5 states colored by residuals.**
 
 # Discussion
 
 After completing our analysis, the results show a strong correlation
 between gun ownership and gun mortality when focused specifically on the
-five states with the highest levels of ownership. The top five states
-for gun ownership were Montana, Wyoming, Alaska, Idaho, and West
-Virginia. Based on the Pearson test, the two variables, firearm
-ownership and firearm mortality, show a high correlation. The resulting
-correlation value of 0.905 is very close to 1, showing a strong positive
-correlation between the two variables. Given the results of this test,
-it made sense to complete a linear regression. From the linear
-regression, a p-value of 0.03455 was produced. This shows statistical
-significance because the value is below 0.05. Additionally, the
-resulting r-squared value of 0.7591 is between the range of 0.7-0.99,
-showing significance. In essence, our results show that there is a
-strong positive correlation between firearm ownership and firearm
-mortality. Owning a firearm is a direct contributing factor to deaths
-caused by firearms, at least at the state level. 
+five states with the highest levels of ownership. As displayed in Figure
+1, the top five states for gun ownership were Montana, Wyoming, Alaska,
+Idaho, and West Virginia. Based on the Pearson test, the two variables,
+firearm ownership and firearm mortality, show a high correlation. The
+resulting correlation value of 0.905 is very close to 1, showing a
+strong positive correlation between the two variables. Given the results
+of this test, it made sense to complete a linear regression. From the
+linear regression, a p-value of 0.03455 was produced. This shows
+statistical significance because the value is below 0.05. Additionally,
+the resulting r-squared value of 0.7591 is between the range of
+0.7-0.99, showing significance. In essence, as displayed in Figure 3,
+our results show that there is a strong positive correlation between
+firearm ownership and firearm mortality. Owning a firearm is a direct
+contributing factor to deaths caused by firearms, at least at the state
+level. 
 
 In terms of the broader implications of this study, these results may be
 used as evidence for further reform to firearm ownership requirements in
@@ -311,9 +334,9 @@ problems such as gun mortality in the United States. Additionally,
 studies such as this one contribute to clearer communication of results
 within the scientific community. Being able to produce compelling
 charts, graphs, and other visualizations makes data easier to digest for
-a lay audience. For instance, in this study, the graph displaying the
-linear regression relating firearm ownership and firearm mortality
-provides a clear representation of this relationship. While the average
+a lay audience. For instance, in this study, Figure 4 displays the
+linear regression relating firearm ownership and firearm mortality,
+providing a clear representation of this relationship. While the average
 American may not have knowledge of a Pearson test or even be familiar
 with the verbiage of a linear regression, they likely have a basic
 understanding of graphs and can identify a linear relationship. Making
