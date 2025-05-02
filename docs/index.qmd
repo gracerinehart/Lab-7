@@ -286,10 +286,9 @@ percentage.**
 ```{r}
 pred_data <- augment(linear_mod, newdata = gun_data)
 
-plot5 <- pred_data %>%
+pred_data %>%
 ggplot(aes(x = Household_pct_ownership, y = .fitted)) +
   geom_point(aes(color = .resid))
-print(plot5)
 ```
 
 **Figure 4b: Graph visualizing predicted death rate values using
