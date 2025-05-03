@@ -192,13 +192,16 @@ before the utilization of the Shapiro-Wilk test.
 ```{r}
 plot1<- gun_data_con |>
 ggbarplot(x = 'State', y = 'Household_pct_ownership',
-          fill = "Death_Rate") 
+          fill = "Death_Rate") +
+  labs(x = "State", y = "Gun Ownership Percent Per Household",
+       title = "Top Five States Ordered by Death Rate") +
+  theme(legend.position = "right")
 print(plot1)
 ```
 
-**Figure 1: Barplot visualizing the household ownership based on state,
-colored by death rate. This shows the relationship between household gun
-ownership percentage and death rate.**
+**Figure 1:** Barplot visualizing the household ownership based on
+state, colored by death rate. This shows the relationship between
+household gun ownership percentage and death rate.
 
 Multiple results were determined from the analysis of the shortened
 dataset. It was determined through Shapiro-Wilk tests that both gun
@@ -213,8 +216,8 @@ shapiro.test(gun_data_con$Death_Rate)
 
 ```
 
-**Figure 2: Results of the Shapiro-Wilk normality test using the Pearson
-method. The test showed a normal distribution.**
+**Figure 2:** Results of the Shapiro-Wilk normality test using the
+Pearson method. The test showed a normal distribution.
 
 Our Pearson method correlation test showed that the variables
 Household_pct_ownership and Death_Rate had a correlation value of 0.905.
@@ -237,25 +240,24 @@ summary(linear_mod)
 
 ```
 
-**Figure 3a: Summary results on linear regression model using gun
+**Figure 3a:** Summary results on linear regression model using gun
 ownership as a predictor for death rate. The regression shows a strong
-relationship between household gun ownership percentage and death
-rate.**
+relationship between household gun ownership percentage and death rate.
 
 ```{r}
 plot2 <- ggplot(gun_data_con, aes(x = Household_pct_ownership, y = Death_Rate)) +
   geom_point() +
   geom_smooth(method = lm, color = 'red') +
-  labs(x = "Gun % Per Household",
+  labs(x = "Gun Ownership Percent Per Household",
        y = "Death Rate",
-       title = "Relationship Between gun % Per Household and Death Rate ") +
+       title = "Relationship Between Gun Ownership Percent Per Household and Death Rate ") +
   theme_linedraw()
 print(plot2)
 ```
 
-**Figure 3b:** **Graph visualizing the relationship between household
-gun ownership percentage and death rate. This shows that both variables
-linearly increase together.**
+**Figure 3b:** Graph visualizing the relationship between household gun
+ownership percentage and death rate. This shows that both variables
+linearly increase together.
 
 A predicted graph was made to visualize the relationship between gun
 ownership per household and death rate to determine the accuracy of our
@@ -278,23 +280,25 @@ prediction_data <- augment(lm_pred, new_data = gun_data)
 
 ```
 
-**Figure 4a: Summary results on linear regression model using death rate
-as a predictor for gun ownership. The regression shows a strong
-relationship between death rate and household gun ownership
-percentage.**
+**Figure 4a:** Summary results on linear regression model using death
+rate as a predictor for gun ownership. The regression shows a strong
+relationship between death rate and household gun ownership percentage.
 
 ```{r}
 pred_data <- augment(linear_mod, newdata = gun_data)
 
 pred_data %>%
 ggplot(aes(x = Household_pct_ownership, y = .fitted)) +
-  geom_point(aes(color = .resid))
+  geom_point(aes(color = .resid)) +
+  labs(x = "Gun Ownership Percent Per Household",
+       y = "Death Rate",
+       title = "Predicted Death Rate Values")
 ```
 
-**Figure 4b: Graph visualizing predicted death rate values using
+**Figure 4b:** Graph visualizing predicted death rate values using
 household ownership percent with a linear regression from the top five
 states, colored by residuals. This graph shows that residual values
-increase as data moves away from our sample data.**
+increase as data moves away from our sample data.
 
 # Discussion
 

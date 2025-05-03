@@ -189,7 +189,7 @@ div.csl-indent {
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-1" href="index-preview.html">Source: Article Notebook</a></div>
-<p><strong>Figure 1: Barplot visualizing the household ownership based on state, colored by death rate. This shows the relationship between household gun ownership percentage and death rate.</strong></p>
+<p><strong>Figure 1:</strong> Barplot visualizing the household ownership based on state, colored by death rate. This shows the relationship between household gun ownership percentage and death rate.</p>
 <p>Multiple results were determined from the analysis of the shortened dataset. It was determined through Shapiro-Wilk tests that both gun ownership percentage &amp; death rate had a p value greater than 0.05, with a p value of 0.2029 for gun ownerhsip percentage among households, and a p value of 0.5634 for death rates.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -207,7 +207,7 @@ data:  gun_data_con$Death_Rate
 W = 0.92511, p-value = 0.5634</code></pre>
 </div>
 </div>
-<p><strong>Figure 2: Results of the Shapiro-Wilk normality test using the Pearson method. The test showed a normal distribution.</strong></p>
+<p><strong>Figure 2:</strong> Results of the Shapiro-Wilk normality test using the Pearson method. The test showed a normal distribution.</p>
 <p>Our Pearson method correlation test showed that the variables Household_pct_ownership and Death_Rate had a correlation value of 0.905. The Pearson correlation method was used because the sample data followed a normal distribution. Plotting of Household_pct_ownership on the x-axis and Death_Rate on the y-axis using a ggplot function allowed for visualization of this relationship. A linear regression using death_rate as our predicted variable, and household percent as our predictor variable, was used to determine p value and r squared values to determine if a linear relationship existed. With our sample data being the data used, the model provided a p value of 0.03455, and an R-squared value of 0.7591&nbsp;</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -234,7 +234,7 @@ Multiple R-squared:  0.8193,    Adjusted R-squared:  0.7591
 F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
 </div>
-<p><strong>Figure 3a: Summary results on linear regression model using gun ownership as a predictor for death rate. The regression shows a strong relationship between household gun ownership percentage and death rate.</strong></p>
+<p><strong>Figure 3a:</strong> Summary results on linear regression model using gun ownership as a predictor for death rate. The regression shows a strong relationship between household gun ownership percentage and death rate.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -244,7 +244,7 @@ F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Figure 3b:</strong> <strong>Graph visualizing the relationship between household gun ownership percentage and death rate. This shows that both variables linearly increase together.</strong></p>
+<p><strong>Figure 3b:</strong> Graph visualizing the relationship between household gun ownership percentage and death rate. This shows that both variables linearly increase together.</p>
 <p>A predicted graph was made to visualize the relationship between gun ownership per household and death rate to determine the accuracy of our model. Using lm(household_pct_ownership ~ death_rate, data = gun_data_con) representing the cleaned dataset with the top 5 states for gun ownership, this fit was applied to the full cleaned dataset and was then visualized. This visualization found that datapoints that had lower gun ownership percentages had higher residual values than those with higher gun ownership percentages.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -268,7 +268,7 @@ Multiple R-squared:  0.8193,    Adjusted R-squared:  0.7591
 F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
 </div>
-<p><strong>Figure 4a: Summary results on linear regression model using death rate as a predictor for gun ownership. The regression shows a strong relationship between death rate and household gun ownership percentage.</strong></p>
+<p><strong>Figure 4a:</strong> Summary results on linear regression model using death rate as a predictor for gun ownership. The regression shows a strong relationship between death rate and household gun ownership percentage.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -278,7 +278,7 @@ F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Figure 4b: Graph visualizing predicted death rate values using household ownership percent with a linear regression from the top five states, colored by residuals. This graph shows that residual values increase as data moves away from our sample data.</strong></p>
+<p><strong>Figure 4b:</strong> Graph visualizing predicted death rate values using household ownership percent with a linear regression from the top five states, colored by residuals. This graph shows that residual values increase as data moves away from our sample data.</p>
 </section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
@@ -752,7 +752,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

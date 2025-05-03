@@ -342,7 +342,7 @@ Attaching package: 'dplyr'</code></pre>
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -397,8 +397,11 @@ Attaching package: 'ggpubr'</code></pre>
 <div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot1<span class="ot">&lt;-</span> gun_data_con <span class="sc">|&gt;</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbarplot</span>(<span class="at">x =</span> <span class="st">'State'</span>, <span class="at">y =</span> <span class="st">'Household_pct_ownership'</span>,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"Death_Rate"</span>) </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"Death_Rate"</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"State"</span>, <span class="at">y =</span> <span class="st">"Gun Ownership Percent Per Household"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Top Five States Ordered by Death Rate"</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
@@ -407,7 +410,7 @@ Attaching package: 'ggpubr'</code></pre>
 </div>
 </div>
 </div></div>
-<p><strong>Figure 1: Barplot visualizing the household ownership based on state, colored by death rate. This shows the relationship between household gun ownership percentage and death rate.</strong></p>
+<p><strong>Figure 1:</strong> Barplot visualizing the household ownership based on state, colored by death rate. This shows the relationship between household gun ownership percentage and death rate.</p>
 <p>Multiple results were determined from the analysis of the shortened dataset. It was determined through Shapiro-Wilk tests that both gun ownership percentage &amp; death rate had a p value greater than 0.05, with a p value of 0.2029 for gun ownerhsip percentage among households, and a p value of 0.5634 for death rates.</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(gun_data_con<span class="sc">$</span>Household_pct_ownership)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -427,7 +430,7 @@ data:  gun_data_con$Death_Rate
 W = 0.92511, p-value = 0.5634</code></pre>
 </div>
 </div></div>
-<p><strong>Figure 2: Results of the Shapiro-Wilk normality test using the Pearson method. The test showed a normal distribution.</strong></p>
+<p><strong>Figure 2:</strong> Results of the Shapiro-Wilk normality test using the Pearson method. The test showed a normal distribution.</p>
 <p>Our Pearson method correlation test showed that the variables Household_pct_ownership and Death_Rate had a correlation value of 0.905. The Pearson correlation method was used because the sample data followed a normal distribution. Plotting of Household_pct_ownership on the x-axis and Death_Rate on the y-axis using a ggplot function allowed for visualization of this relationship. A linear regression using death_rate as our predicted variable, and household percent as our predictor variable, was used to determine p value and r squared values to determine if a linear relationship existed. With our sample data being the data used, the model provided a p value of 0.03455, and an R-squared value of 0.7591&nbsp;</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>correlation_metric <span class="ot">&lt;-</span> <span class="fu">cor</span>(gun_data_con<span class="sc">$</span>Death_Rate, gun_data_con<span class="sc">$</span>Household_pct_ownership,  <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
@@ -458,14 +461,14 @@ Multiple R-squared:  0.8193,    Adjusted R-squared:  0.7591
 F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
 </div></div>
-<p><strong>Figure 3a: Summary results on linear regression model using gun ownership as a predictor for death rate. The regression shows a strong relationship between household gun ownership percentage and death rate.</strong></p>
+<p><strong>Figure 3a:</strong> Summary results on linear regression model using gun ownership as a predictor for death rate. The regression shows a strong relationship between household gun ownership percentage and death rate.</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(gun_data_con, <span class="fu">aes</span>(<span class="at">x =</span> Household_pct_ownership, <span class="at">y =</span> Death_Rate)) <span class="sc">+</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">color =</span> <span class="st">'red'</span>) <span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gun % Per Household"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gun Ownership Percent Per Household"</span>,</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Death Rate"</span>,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relationship Between gun % Per Household and Death Rate "</span>) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relationship Between Gun Ownership Percent Per Household and Death Rate "</span>) <span class="sc">+</span></span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span>
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -479,7 +482,7 @@ F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
 </div>
 </div></div>
-<p><strong>Figure 3b:</strong> <strong>Graph visualizing the relationship between household gun ownership percentage and death rate. This shows that both variables linearly increase together.</strong></p>
+<p><strong>Figure 3b:</strong> Graph visualizing the relationship between household gun ownership percentage and death rate. This shows that both variables linearly increase together.</p>
 <p>A predicted graph was made to visualize the relationship between gun ownership per household and death rate to determine the accuracy of our model. Using lm(household_pct_ownership ~ death_rate, data = gun_data_con) representing the cleaned dataset with the top 5 states for gun ownership, this fit was applied to the full cleaned dataset and was then visualized. This visualization found that datapoints that had lower gun ownership percentages had higher residual values than those with higher gun ownership percentages.</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Household_pct_ownership <span class="sc">~</span> Death_Rate, <span class="at">data =</span> gun_data_con)</span>
@@ -510,13 +513,16 @@ F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>prediction_data <span class="ot">&lt;-</span> <span class="fu">augment</span>(lm_pred, <span class="at">new_data =</span> gun_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<p><strong>Figure 4a: Summary results on linear regression model using death rate as a predictor for gun ownership. The regression shows a strong relationship between death rate and household gun ownership percentage.</strong></p>
+<p><strong>Figure 4a:</strong> Summary results on linear regression model using death rate as a predictor for gun ownership. The regression shows a strong relationship between death rate and household gun ownership percentage.</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pred_data <span class="ot">&lt;-</span> <span class="fu">augment</span>(linear_mod, <span class="at">newdata =</span> gun_data)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>pred_data <span class="sc">%&gt;%</span></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Household_pct_ownership, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> .resid))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gun Ownership Percent Per Household"</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Death Rate"</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Predicted Death Rate Values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
@@ -525,7 +531,7 @@ F-statistic:  13.6 on 1 and 3 DF,  p-value: 0.03455</code></pre>
 </div>
 </div>
 </div></div>
-<p><strong>Figure 4b: Graph visualizing predicted death rate values using household ownership percent with a linear regression from the top five states, colored by residuals. This graph shows that residual values increase as data moves away from our sample data.</strong></p>
+<p><strong>Figure 4b:</strong> Graph visualizing predicted death rate values using household ownership percent with a linear regression from the top five states, colored by residuals. This graph shows that residual values increase as data moves away from our sample data.</p>
 </section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
@@ -995,7 +1001,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
