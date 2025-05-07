@@ -44,8 +44,8 @@ requirements.
 
 # Introduction
 
-Through this study, we hope to address and provide increased analysis of
-the problem of firearm mortality in the United States. Gun violence is a
+Through this study, we address and provide increased analysis of the
+problem of firearm mortality in the United States. Gun violence is a
 major safety, social, and public health problem within the United States
 and requires additional investigation. America has the highest
 percentage of gun ownership with an estimated 270 to 310 million
@@ -302,21 +302,21 @@ increase as data moves away from our sample data.
 
 # Discussion
 
-After completing our analysis, the results show a strong correlation
+After completing our analysis, the results showed a strong correlation
 between gun ownership and gun mortality when focused specifically on the
 five states with the highest levels of ownership. As displayed in Figure
 1, the top five states for gun ownership were Montana, Wyoming, Alaska,
 Idaho, and West Virginia. Based on the Pearson test, the two variables,
-firearm ownership and firearm mortality, show a direct correlation. The
-resulting correlation value of 0.905 is very close to 1, showing a
+firearm ownership and firearm mortality, showed a direct correlation.
+The resulting correlation value of 0.905 is very close to 1, showing a
 strong positive correlation between the two variables (Figure 2). Given
 the results of this test, it made sense to complete a linear regression.
 From the linear regression, a p-value of 0.03455 was produced (Figure
-3a). This shows statistical significance because the value is below
+3a). This showed statistical significance because the value is below
 0.05. Additionally, the resulting r-squared value of 0.7591 is between
 the range of 0.7-0.99, showing significance (Figure 3a). Examining the
 relationship between the percentage of households that own a firearm and
-firearm mortality, there is a positive direct correlation. As the
+firearm mortality, there was a positive direct correlation. As the
 percentage of households that own a firearm increases, so does the
 firearm mortality rate (Figure 3b). In essence, as displayed in Figure
 4b, our results show that there is a strong positive correlation between
@@ -341,7 +341,7 @@ limits and additional restrictions on the number of firearms one may
 possess. 
 
 In terms of areas for improvement, this study contains a few
-limitations. One limitation would be the scope of this project. For
+limitations. One limitation is the scope of this project. For
 simplicity's sake, our project focused on the top five states with the
 highest levels of gun ownership. However, given that there are 50 states
 within the United States, this means only 10 percent of the total states
@@ -418,10 +418,10 @@ firearms and mortality caused by them.
 # Conclusion
 
 Overall, the Pearson test performed in this analysis resulted in a
-statistically significant R-squared and p-value. Likewise, linear
-regression demonstrates a clear positive correlation between firearm
+statistically significant R-squared and p-value. Likewise, the linear
+regression demonstrated a clear positive correlation between firearm
 ownership and firearm mortality within the top five states for firearm
-ownership. This study contributes to the growing evidence that further
+ownership. This study contributed to the growing evidence that further
 restrictions on firearm ownership are necessary. Evidence suggests that
 with a smaller percentage of households owning firearms, it is likely
 that firearm mortality will decrease. Furthermore, this study serves as
